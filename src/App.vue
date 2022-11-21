@@ -21,12 +21,12 @@ export default {
     getApi(){
       axios.get(store.apiUrl, {
         params:{
-          query: 'matrix'
+          query: store.userQuery
         }
       })
       .then(result => {
         store.querys = result.data.results
-        console.log(store.query);
+        console.log(store.querys);
       })
       .catch(error => {
         console.log(error);
@@ -42,7 +42,7 @@ export default {
 
 <template>
 
-  <AppHeader/>
+  <AppHeader @search="this.getApi()"/>
   <AppMain/>
 
 </template>

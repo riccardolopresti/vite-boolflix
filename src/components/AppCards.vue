@@ -18,6 +18,7 @@ export default {
     <div class="box d-flex" v-for="query in store.querys" :key="query.id">
         
         <ul>
+            <img :src="query.img" alt="">
             <li>Titolo:{{query.title}}</li>
             <li>Titolo Originale:{{query.original_title}}</li>
             <li>Lingua:{{query.original_language}}</li>
