@@ -18,7 +18,7 @@ export default {
     }
   },
   methods:{
-    getMoviesApi(){
+    /*getMoviesApi(){
       axios.get(store.apiMovieUrl, {
         params:{
           query: store.userQuery
@@ -46,11 +46,30 @@ export default {
       .catch(error => {
         console.log(error);
       })
+    }*/
+    getApi(){
+      axios.all([axios.get(store.apiTvUrl),axios.get(store.apiMovieUrl),{
+        params:{
+          query: store.userQuery
+        }
+      }])
+      .then(axios.spread ((result1, result2) => {
+        store.querysTv = result1.data.results
+        store.querysMovie = result2.data.results
+        console.log(result1.data.results);
+        console.log(result2.data.results);
+        console.log(store.querysTv);
+      }))
+      .catch(error => {
+        console.log(error);
+      })
     }
+
   },
   mounted(){
-    this.getMoviesApi()
-    this.getTvApi()
+    /*this.getMoviesApi()
+    this.getTvApi()*/
+    this.getApi()
   }
 }
 

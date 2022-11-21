@@ -36,7 +36,7 @@ export default {
 
 <style lang="scss" scoped>
 .row{
-    background-color: white ;
+    background-color: rgb(82, 82, 82) ;
 }
 .col{
     background-color: rgb(82, 59, 59) ;

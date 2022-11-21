@@ -6,8 +6,8 @@
 
 body{
     color: $font-primary-color;
-    background-color: rgb(140, 70, 70);
-    height: 100vh;
+    background-color: lighten($bg-primary-color, 5%);
+    min-height: 100vh;
 }
 
 img{
