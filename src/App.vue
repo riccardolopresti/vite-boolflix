@@ -58,7 +58,7 @@ export default {
 
 <template>
 
-  <AppHeader @search="this.getApi()"/>
+  <AppHeader @search="this.getMoviesApi(), this.getTvApi()"/>
   <AppMain/>
 
 </template>
