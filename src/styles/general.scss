@@ -1,0 +1,29 @@
+@use './partials/vars' as *;
+
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'node_modules/flag-icons-css/flag-icons.min.css';
+@import 'node_modules/@fortawesome/fontawesome-free/css/all.min.css';
+
+body{
+    color: $font-primary-color;
+    background-color: rgb(140, 70, 70);
+    height: 100vh;
+}
+
+img{
+    max-width: 100%;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    color: $font-primary-color;
+    text-decoration: none;
+}
+
+.rl-container{
+    max-width: 1920px;
+    margin: 0 auto;
+}
