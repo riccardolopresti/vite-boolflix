@@ -11,6 +11,12 @@ export default {
         return{
             
         }
+    },
+    methods:{
+        getFlag(string){
+            if(string == 'en') return 'gb'
+            else return string
+        }
     }
     
 }
@@ -25,7 +31,7 @@ export default {
             <img src="" alt="">
             <li>Titolo:{{object.title}}</li>
             <li>Titolo Originale:{{object.original_title}}</li>
-            <li>Lingua:<span :class="`fi fi-${object.original_language}`"></span></li>
+            <li>Lingua:<span :class="`fi fi-${getFlag(object.original_language)}`"></span></li>
             <li>Voto:{{object.vote_average}}</li>
         </ul>
     </div>
@@ -36,7 +42,7 @@ export default {
             <img src="" alt="">
             <li>Titolo:{{object.name}}</li>
             <li>Titolo Originale:{{object.original_name}}</li>
-            <li>Lingua:<span :class="`fi fi-${object.original_language}`"></span></li>
+            <li>Lingua:<span :class="`fi fi-${getFlag(object.original_language)}`"></span></li>
             <li>Voto:{{object.vote_average}}</li>
         </ul>
 
