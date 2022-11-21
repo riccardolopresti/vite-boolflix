@@ -30,6 +30,7 @@ export default {
         }
       })
       .then(result => {
+        console.log('dop',urlQuery);
         if(urlSuffix == store.apiMovieUrl){
           store.querysMovies = result.data.results
           //console.log('MOVIE',store.querysMovies);
@@ -38,8 +39,16 @@ export default {
           store.querysTv = result.data.results
           //console.log('TV',store.querysTv);
         }
+        if(urlSuffix == store.apiTrend){
+          //store.onLoad == result.data
+          //console.log(store.onLoad);
+        }
+
         store.queryMovieTv = store.querysMovies.concat(store.querysTv)
         console.log('array concatenato',store.queryMovieTv);
+      })
+      .catch(error => {
+        console.log(error);
       })
     },
   },

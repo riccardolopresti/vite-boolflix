@@ -19,14 +19,11 @@ export default {
             else return string
         },
         getStar(number){
-            const newNumber = Math.round(number)
-            const stars = newNumber / 2;
-            console.log(stars);
-            
+            return Math.round(number / 2);
         }
     },
     mounted(){
-        this. getStar(9)
+
     }
 }
 </script>
@@ -39,10 +36,11 @@ export default {
         
         <img :src="`${imdbUrl}${imdbWidth}${object.backdrop_path}`" :alt="object.name">
         <div class="back-cards" :class="{'active': object.backdrop_path == null}">
-            <p>Titolo:{{object.title}}{{object.name}}</p>
-            <p>Titolo Originale:{{object.original_title}}{{object.original_name}}</p>
-            <p>Lingua:<span :class="`fi fi-${getFlag(object.original_language)}`"></span></p>
-            <p>Voto:<i  class="fa-solid fa-star"></i></p>
+            <p>Titolo: {{object.title}}{{object.name}}</p>
+            <p>Titolo Originale: {{object.original_title}}{{object.original_name}}</p>
+            <p>Lingua: <span :class="`fi fi-${getFlag(object.original_language)}`"></span></p>
+            <p v-if="getStar(object.vote_average) > 0">Voto:<i v-for="item in getStar(object.vote_average)" :key="item" class="fa-solid fa-star"></i></p>
+            <p v-else>Voto: <i class="fa-regular fa-star"></i></p>
         </div>
 
     </div>
