@@ -6,9 +6,11 @@
 
 body{
     color: $font-primary-color;
+    font-family: $font-family-primary;
     background-color: lighten($bg-primary-color, 5%);
     min-height: 100vh;
 }
+
 
 img{
     max-width: 100%;

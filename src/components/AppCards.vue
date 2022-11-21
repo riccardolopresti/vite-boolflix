@@ -33,14 +33,15 @@ export default {
 <div class="rl-cards d-flex flex-wrap justify-content-center">
 
     <div class="box d-flex" v-for="object in objects" :key="object.id">
-        
+
         <img :src="`${imdbUrl}${imdbWidth}${object.backdrop_path}`" :alt="object.name">
-        <div class="back-cards" :class="{'active': object.backdrop_path == null}">
-            <p>Titolo: {{object.title}}{{object.name}}</p>
-            <p>Titolo Originale: {{object.original_title}}{{object.original_name}}</p>
-            <p>Lingua: <span :class="`fi fi-${getFlag(object.original_language)}`"></span></p>
-            <p v-if="getStar(object.vote_average) > 0">Voto:<i v-for="item in getStar(object.vote_average)" :key="item" class="fa-solid fa-star"></i></p>
-            <p v-else>Voto: <i class="fa-regular fa-star"></i></p>
+
+        <div class="back-cards p-3" :class="{'active': object.backdrop_path == null}">
+            <p>{{object.original_title}}{{object.original_name}}</p>
+            <p><span :class="`fi fi-${getFlag(object.original_language)}`"></span></p>
+            <p v-if="getStar(object.vote_average) > 0">Voto: <i v-for="item in getStar(object.vote_average)" :key="item" class="fa-solid fa-star"></i></p>
+            <p v-else><i class="fa-regular fa-star"></i></p>
+            <p class="overview">{{object.overview}}</p>
         </div>
 
     </div>
@@ -51,6 +52,7 @@ export default {
 
 <style lang="scss" scoped>
 @use '../styles/general';
+@use '../styles/partials/vars' as *;
 .rl-cards{
     gap: 20px;
     padding-top: 20px;
@@ -67,17 +69,42 @@ export default {
 }
 .back-cards{
     position: absolute;
+    overflow: hidden;
     display: none;
     background-color: rgba(0, 0, 0, 0.632);
     width: 320px;
     height: 450px;
     left: 0;
-    top:0;
+    top:0px;
+    animation-name: example;
+    animation-duration: 0.6s;  
     .box:hover &{
         display: block;
+        @keyframes example {
+        from {top: 450px}
+        to {bottom:0px}
+        }
+    }
+    p:first-child{
+        max-height: 120px;
+        overflow: auto;
+        font-size: 2.3rem;
+        text-transform: uppercase;
+        font-weight: bolder;
+        &:last-child{
+            font-size: 1rem;
+            text-transform:none;
+            font-weight: 400;
+        }
     }
     .active{
         display: block;
     }
+    .overview{
+        font-family: $font-family-secondary;
+        height: 200px;
+        overflow: auto;
+    }
 }
+
 </style>

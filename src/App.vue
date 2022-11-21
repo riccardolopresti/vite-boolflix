@@ -45,7 +45,7 @@ export default {
         }
 
         store.queryMovieTv = store.querysMovies.concat(store.querysTv)
-        console.log('array concatenato',store.queryMovieTv);
+        //console.log('array concatenato',store.queryMovieTv);
       })
       .catch(error => {
         console.log(error);

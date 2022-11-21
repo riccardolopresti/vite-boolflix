@@ -19,7 +19,7 @@ export default {
 <template>
   <div class="conteiner-fluid">
     <div class="rl-container">
-        <div class="row p-5">
+        <div class="row p-2">
             <div class="col">
 
                 <AppCards 
@@ -34,10 +34,5 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.row{
-    background-color: rgb(82, 82, 82) ;
-}
-.col{
-    background-color: rgb(82, 59, 59) ;
-}
+
 </style>

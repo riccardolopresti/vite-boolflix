@@ -17,18 +17,32 @@ export default {
         <div class="container-fluid h-100">
             <div class="rl-container d-flex h-100">
 
-                <div class="row d-flex justify-content-between w-100">
-                    <div class="col d-flex">
+                <div class="row d-flex w-100">
+
+                    <div class="col-1 d-flex">
                         <div class="logo d-flex align-item-center">
                             <img src="/logo.png" alt="logo">
                         </div>
                     </div>
-                    <div class="col d-flex align-item-center rl-center">
+
+                    <div class="col-6 d-flex flex-start">
+                        <nav class="h-100 d-flex align-items-center">
+                            <ul class="h-100 d-flex align-items-center">
+                                <li><a href="#"></a>Home</li>
+                                <li><a href="#"></a>FILM</li>
+                                <li><a href="#"></a>Serie tv</li>
+                                <li><a href="#"></a>La mia lista</li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div class="col-2 d-flex align-item-center rl-center">
                         <div class="input-group mb-3 d-flex align-content-center h-100">
                             <input @keyup.enter="$emit('search')" type="text" v-model="store.userQuery" class="form-control rl-btn" placeholder="Cerca">
                             <button @click="$emit('search')" class="btn btn-outline-secondary rl-btn">Cerca</button>
                         </div>
                     </div>
+
                 </div>
 
             </div>
@@ -44,14 +58,15 @@ header{
     height: 100px;
     background-color: $bg-primary-color;
 }
-
 img{
-    width: 180px;
+    min-width: 180px;
     object-fit: contain;
 }
-.btn.rl-btn,
-.form-control.rl-btn{
-    height: 35%;
-    line-height: 35%;
+li{
+    font-size: 1.2rem;
+    padding: 0px 15px;
+}
+ol, ul, dl{
+    margin-top: none;
 }
 </style>
