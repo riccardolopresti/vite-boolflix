@@ -25,7 +25,7 @@ export default {
                     </div>
                     <div class="col d-flex align-item-center rl-center">
                         <div class="input-group mb-3 d-flex align-content-center h-100">
-                            <input type="text" v-model="store.userQuery" class="form-control rl-btn" placeholder="Cerca">
+                            <input @keyup.enter="$emit('search')" type="text" v-model="store.userQuery" class="form-control rl-btn" placeholder="Cerca">
                             <button @click="$emit('search')" class="btn btn-outline-secondary rl-btn">Cerca</button>
                         </div>
                     </div>

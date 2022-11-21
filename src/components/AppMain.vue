@@ -1,11 +1,17 @@
 <script>
 
 import AppCards from './AppCards.vue';
+import {store} from '../data/store.js'
 
 export default {
     name:'AppMain',
     components:{
         AppCards
+    },
+    data(){
+        return{
+            store
+        }
     }
 }
 </script>
@@ -15,7 +21,7 @@ export default {
     <div class="rl-container">
         <div class="row p-5">
             <div class="col">
-                <AppCards/>
+                <AppCards :objects="store.querys"/>
             </div>
         </div>
     </div>

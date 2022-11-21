@@ -19,9 +19,9 @@ export default {
   },
   methods:{
     getApi(){
-      axios.get(store.apiUrl, {
+      axios.get(store.apiMovieUrl, {
         params:{
-          query: store.userQuery
+          query: store.userQuery,
         }
       })
       .then(result => {

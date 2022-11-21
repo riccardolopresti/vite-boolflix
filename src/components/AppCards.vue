@@ -1,28 +1,31 @@
 <script>
 
-import {store} from '../data/store.js'
 
 export default {
     name:'AppCards',
+    props:{
+        objects: Object
+    },
     data(){
         return{
-            store
+            
         }
     }
+    
 }
 </script>
 
 <template>
   <div class="rl-cards d-flex flex-wrap justify-content-center">
 
-    <div class="box d-flex" v-for="query in store.querys" :key="query.id">
+    <div class="box d-flex" v-for="object in objects" :key="object.id">
         
         <ul>
-            <img :src="query.img" alt="">
-            <li>Titolo:{{query.title}}</li>
-            <li>Titolo Originale:{{query.original_title}}</li>
-            <li>Lingua:{{query.original_language}}</li>
-            <li>Voto:{{query.vote_average}}</li>
+            <img src="" alt="">
+            <li>Titolo:{{object.title}}{{object.name}}</li>
+            <li>Titolo Originale:{{object.original_title}}{{object.original_name}}</li>
+            <li>Lingua:<span :class="`fi fi-${object.original_language}`"></span></li>
+            <li>Voto:{{object.vote_average}}</li>
         </ul>
     </div>
  
@@ -30,6 +33,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use '../styles/general';
 .rl-cards{
     gap: 20px;
     padding-top: 20px;
@@ -47,6 +51,5 @@ export default {
 }
 li{
     color: black;
-
 }
 </style>
