@@ -21,7 +21,13 @@ export default {
     <div class="rl-container">
         <div class="row p-5">
             <div class="col">
-                <AppCards :objectsMovies="store.querysMovie" :objectTvs="store.querysTv"/>
+
+                <AppCards 
+                :objectsMovies="store.querysMovie" 
+                :objectTvs="store.querysTv"
+                :imdbUrl="store.mdbUrl"
+                :imdbWidth="store.imgWidth"/>
+
             </div>
         </div>
     </div>
