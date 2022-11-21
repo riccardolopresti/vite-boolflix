@@ -4,8 +4,7 @@
 export default {
     name:'AppCards',
     props:{
-        objectsMovies: Object,
-        objectTvs: Object,
+        objects: Object,
         imdbUrl: String,
         imdbWidth: String,
     },
@@ -33,33 +32,23 @@ export default {
 </script>
 
 <template>
-  <div class="rl-cards d-flex flex-wrap justify-content-center">
 
-    <div class="box d-flex" v-for="object in objectsMovies" :key="object.id">
+<div class="rl-cards d-flex flex-wrap justify-content-center">
+
+    <div class="box d-flex" v-for="object in objects" :key="object.id">
         
         <img :src="`${imdbUrl}${imdbWidth}${object.backdrop_path}`" :alt="object.name">
         <div class="back-cards" :class="{'active': object.backdrop_path == null}">
-            <span>Titolo:{{object.title}}</span>
-            <span>Titolo Originale:{{object.original_title}}</span>
-            <span>Lingua:<span :class="`fi fi-${getFlag(object.original_language)}`"></span></span>
-            <span>Voto:<i  class="fa-solid fa-star"></i></span>
+            <p>Titolo:{{object.title}}{{object.name}}</p>
+            <p>Titolo Originale:{{object.original_title}}{{object.original_name}}</p>
+            <p>Lingua:<span :class="`fi fi-${getFlag(object.original_language)}`"></span></p>
+            <p>Voto:<i  class="fa-solid fa-star"></i></p>
         </div>
 
     </div>
 
-    <div class="box d-flex" v-for="object in objectTvs" :key="object.id">
-        
-        <img :src="`${imdbUrl}${imdbWidth}${object.backdrop_path}`" :alt="object.name">
-        <div class="back-cards">
-            <span>Titolo:{{object.name}}</span>
-            <span>Titolo Originale:{{object.original_name}}</span>
-            <span>Lingua:<span :class="`fi fi-${getFlag(object.original_language)}`"></span></span>
-            <span>Voto:{{object.vote_average}}</span>
-        </div>
-
-    </div>
+</div>
  
-  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -90,9 +79,6 @@ export default {
         display: block;
     }
     .active{
-        display: block;
-    }
-    span{
         display: block;
     }
 }

@@ -23,8 +23,7 @@ export default {
             <div class="col">
 
                 <AppCards 
-                :objectsMovies="store.querysMovie" 
-                :objectTvs="store.querysTv"
+                :objects="store.queryMovieTv"
                 :imdbUrl="store.mdbUrl"
                 :imdbWidth="store.imgWidth"/>
 

@@ -18,58 +18,34 @@ export default {
     }
   },
   methods:{
-    /*getMoviesApi(){
-      axios.get(store.apiMovieUrl, {
+    getApiUrl(urlSuffix){
+      return store.url + urlSuffix
+    },
+    getApi(urlSuffix){
+      const urlQuery= this.getApiUrl(urlSuffix);
+      console.log(urlQuery);
+      axios.get(urlQuery, {
         params:{
           query: store.userQuery
         }
       })
       .then(result => {
-        store.querysMovie = result.data.results
-        console.log(store.querysMovie);
-      })
-      .catch(error => {
-        console.log(error);
+        if(urlSuffix == store.apiMovieUrl){
+          store.querysMovies = result.data.results
+          //console.log('MOVIE',store.querysMovies);
+        }
+        if(urlSuffix == store.apiTvUrl){
+          store.querysTv = result.data.results
+          //console.log('TV',store.querysTv);
+        }
+        store.queryMovieTv = store.querysMovies.concat(store.querysTv)
+        console.log('array concatenato',store.queryMovieTv);
       })
     },
-    getTvApi(){
-      axios.get(store.apiTvUrl, {
-        params:{
-          query: store.userQuery
-        }
-      })
-      .then(result => {
-        store.querysTv = result.data.results
-        console.log(result.data.results);
-        console.log(store.querysTv);
-      })
-      .catch(error => {
-        console.log(error);
-      })
-    }*/
-    getApi(){
-      axios.all([axios.get(store.apiTvUrl),axios.get(store.apiMovieUrl),{
-        params:{
-          query: store.userQuery
-        }
-      }])
-      .then(axios.spread ((result1, result2) => {
-        store.querysTv = result1.data.results
-        store.querysMovie = result2.data.results
-        console.log(result1.data.results);
-        console.log(result2.data.results);
-        console.log(store.querysTv);
-      }))
-      .catch(error => {
-        console.log(error);
-      })
-    }
-
   },
   mounted(){
-    /*this.getMoviesApi()
-    this.getTvApi()*/
-    this.getApi()
+    this.getApi(store.apiMovieUrl)
+    this.getApi(store.apiTvUrl)
   }
 }
 
@@ -77,7 +53,7 @@ export default {
 
 <template>
 
-  <AppHeader @search="this.getMoviesApi(), this.getTvApi()"/>
+  <AppHeader @search="this.getApi(store.apiMovieUrl),this.getApi(store.apiTvUrl)"/>
   <AppMain/>
 
 </template>
