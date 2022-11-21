@@ -21,7 +21,7 @@ export default {
     <div class="rl-container">
         <div class="row p-5">
             <div class="col">
-                <AppCards :objects="store.querys"/>
+                <AppCards :objectsMovies="store.querysMovie" :objectTvs="store.querysTv"/>
             </div>
         </div>
     </div>

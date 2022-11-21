@@ -18,15 +18,30 @@ export default {
     }
   },
   methods:{
-    getApi(){
+    getMoviesApi(){
       axios.get(store.apiMovieUrl, {
         params:{
-          query: store.userQuery,
+          query: store.userQuery
         }
       })
       .then(result => {
-        store.querys = result.data.results
-        console.log(store.querys);
+        store.querysMovie = result.data.results
+        console.log(store.querysMovie);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+    },
+    getTvApi(){
+      axios.get(store.apiTvUrl, {
+        params:{
+          query: store.userQuery
+        }
+      })
+      .then(result => {
+        store.querysTv = result.data.results
+        console.log(result.data.results);
+        console.log(store.querysTv);
       })
       .catch(error => {
         console.log(error);
@@ -34,7 +49,8 @@ export default {
     }
   },
   mounted(){
-    this.getApi()
+    this.getMoviesApi()
+    this.getTvApi()
   }
 }
 

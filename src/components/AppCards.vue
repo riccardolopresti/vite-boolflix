@@ -4,7 +4,8 @@
 export default {
     name:'AppCards',
     props:{
-        objects: Object
+        objectsMovies: Object,
+        objectTvs: Object
     },
     data(){
         return{
@@ -18,15 +19,27 @@ export default {
 <template>
   <div class="rl-cards d-flex flex-wrap justify-content-center">
 
-    <div class="box d-flex" v-for="object in objects" :key="object.id">
+    <div class="box d-flex" v-for="object in objectsMovies" :key="object.id">
         
         <ul>
             <img src="" alt="">
-            <li>Titolo:{{object.title}}{{object.name}}</li>
-            <li>Titolo Originale:{{object.original_title}}{{object.original_name}}</li>
+            <li>Titolo:{{object.title}}</li>
+            <li>Titolo Originale:{{object.original_title}}</li>
             <li>Lingua:<span :class="`fi fi-${object.original_language}`"></span></li>
             <li>Voto:{{object.vote_average}}</li>
         </ul>
+    </div>
+
+    <div class="box d-flex" v-for="object in objectTvs" :key="object.id">
+        
+        <ul>
+            <img src="" alt="">
+            <li>Titolo:{{object.name}}</li>
+            <li>Titolo Originale:{{object.original_name}}</li>
+            <li>Lingua:<span :class="`fi fi-${object.original_language}`"></span></li>
+            <li>Voto:{{object.vote_average}}</li>
+        </ul>
+
     </div>
  
   </div>
