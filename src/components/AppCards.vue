@@ -32,7 +32,9 @@ export default {
 
 <template>
 
-<h1>{{title}}</h1>
+<div class="rl-container">
+    <h1>{{title}}</h1>
+</div>
 
 <div class="rl-cards-container d-flex flex-wrap justify-content-center">
 
@@ -57,10 +59,6 @@ export default {
 
     </div>
 
-    <!--<div class="no-results" v-if="objects.length == 0">
-        <p>nessun risultato</p>
-    </div>-->
-
 </div>
  
 </template>
@@ -68,14 +66,15 @@ export default {
 <style lang="scss" scoped>
 @use '../styles/general';
 @use '../styles/partials/vars' as *;
+
+.rl-container{
+    max-width: 1683px;
+}
 .active{
         background-color: black;
         width: 320px;
         height: 450px;
     }
-h1{
-    margin-left: 112px;
-}
 .rl-cards-container{
     padding-bottom: 50px;
     gap: 20px;
@@ -131,8 +130,4 @@ h1{
         overflow: auto;
     }
 }
-.no-results{
-    font-size: 2.5rem;
-}
-
 </style>

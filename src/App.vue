@@ -19,6 +19,7 @@ export default {
   },
   methods:{
     getApi(type, trend = false){
+      console.log('tipo',type);
       store.trend = [];
       store.movie = [];
       store.tv = [];
@@ -41,6 +42,8 @@ export default {
       })
     },
     getSearch(string){
+      console.log('Search type', string)
+      if(string === 'trend') this.getApi('trend',true)
       if(string == 'all'){
         this.getApi('movie')
         this.getApi('tv')
@@ -62,10 +65,8 @@ export default {
 <template>
 
   <AppHeader 
-  @search="this.getSearch('all')" 
-  @home="this.getApi('trend', true)"
-  @film="this.getSearch('movie')"
-  @tv="this.getSearch('tv')"
+ @changeResultsType="(typeSeach) => getSearch(typeSeach)"
+ @search="getSearch('all')"
   />
   <AppMain/>
 

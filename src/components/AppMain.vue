@@ -33,6 +33,9 @@ export default {
 
                 <AppCards v-if="store.tv.length > 0" title="Serie Tv" type="tv"/>
 
+                <div class="no-results" v-if="(store.movie.length == 0) && (store.tv.length == 0) && (store.trend.length == 0)">
+                    <p>nessun risultato</p>
+                </div>
 
             </div>
         </div>
@@ -41,5 +44,8 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-    
+.no-results{
+    text-align: center;
+    font-size: 2.5rem;
+}
 </style>
