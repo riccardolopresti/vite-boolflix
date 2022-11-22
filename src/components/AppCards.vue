@@ -9,6 +9,7 @@ export default {
         type: String,
         imdbUrl: String,
         imdbWidth: String,
+        title: String
     },
     data(){
         return{
@@ -33,8 +34,11 @@ export default {
 
 <template>
 
-<div class="rl-cards d-flex flex-wrap justify-content-center">
+<h1>{{title}}</h1>
 
+<div class="rl-cards-container d-flex flex-wrap justify-content-center">
+
+    
     <div class="box d-flex" v-for="object in store[type]" :key="object.id">
 
         <img :src="`${store.mdbUrl}${store.imgWidth}${object.backdrop_path}`" :alt="object.name">
@@ -63,9 +67,12 @@ export default {
 <style lang="scss" scoped>
 @use '../styles/general';
 @use '../styles/partials/vars' as *;
-.rl-cards{
+
+h1{
+    margin-left: 112px;
+}
+.rl-cards-container{
     gap: 20px;
-    padding-top: 20px;
     color: lighten($font-primary-color, 10%);
 }
 .box{
