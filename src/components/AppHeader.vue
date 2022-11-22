@@ -66,7 +66,4 @@ li{
     font-size: 1.2rem;
     padding: 0px 15px;
 }
-ol, ul, dl{
-    margin-top: none;
-}
 </style>

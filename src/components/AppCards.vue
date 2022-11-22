@@ -46,6 +46,10 @@ export default {
 
     </div>
 
+    <div class="no-results" v-if="objects.length == 0">
+        <p>nessun risultato</p>
+    </div>
+
 </div>
  
 </template>
@@ -105,6 +109,9 @@ export default {
         height: 200px;
         overflow: auto;
     }
+}
+.no-results{
+    font-size: 2.5rem;
 }
 
 </style>
