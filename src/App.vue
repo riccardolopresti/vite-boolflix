@@ -65,8 +65,8 @@ export default {
 <template>
 
   <AppHeader 
- @changeResultsType="(typeSeach) => getSearch(typeSeach)"
- @search="getSearch('all')"
+  @changeResultsType="(typeSeach) => getSearch(typeSeach)"
+  @search="getSearch('all')"
   />
   <AppMain/>
 

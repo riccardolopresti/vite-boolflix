@@ -60,13 +60,13 @@ export default {
 
                 <div class="row d-flex w-100 ">
 
-                    <div class="col-auto d-flex ">
+                    <div class="col-auto d-flex h-100 ">
                         <div class="logo d-flex align-item-center">
                             <img src="/logo.png" alt="logo">
                         </div>
                     </div>
                     
-                    <div class="col d-flex justify-content-between">
+                    <div class="rl-nav col d-flex justify-content-between">
 
                         <div class="col-auto">
                             <nav class="h-100 ">
@@ -130,10 +130,13 @@ header{
     background-color: $bg-primary-color;
 }
 .logo img{
-    min-width: 180px;
-    max-width: 180px;
+    min-width: 80px;
+    width: 180px;
     object-fit: contain;
     cursor: pointer;
+}
+nav{
+    min-width: 200px;
 }
 li{
     font-size: 1.2rem;
@@ -150,6 +153,9 @@ li{
             padding-bottom: 5px;
         }
     }
+}
+.row{
+    flex-wrap: nowrap;
 }
 i{
     cursor: pointer;

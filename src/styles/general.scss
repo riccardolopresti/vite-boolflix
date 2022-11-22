@@ -5,6 +5,7 @@
 @import 'node_modules/@fortawesome/fontawesome-free/css/all.min.css';
 
 body{
+    min-width: 750px;
     color: $font-primary-color;
     font-family: $font-family-primary;
     background-color: lighten($bg-primary-color, 5%);
