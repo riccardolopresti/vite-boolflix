@@ -39,9 +39,12 @@ export default {
     
     <div class="box d-flex" v-for="object in store[type]" :key="object.id">
 
-        <img :src="`${store.mdbUrl}${store.imgWidth}${object.backdrop_path}`" :alt="object.name">
+        <img 
+        :src="`${store.mdbUrl}${store.imgWidth}${object.backdrop_path}`" 
+        :alt="object.name || object.title"
+        >
 
-        <div class="back-cards p-3" :class="{'active': object.backdrop_path == null}">
+        <div class="back-cards p-3" >
             <p>{{object.original_title || object.original_name}}</p>
             <p><span :class="`fi fi-${getFlag(object.original_language)}`"></span></p>
             <p v-if="getStar(object.vote_average) > 0">Valutazione: <i v-for="item in getStar(object.vote_average)" :key="item" class="fa-solid fa-star"></i>
@@ -65,7 +68,11 @@ export default {
 <style lang="scss" scoped>
 @use '../styles/general';
 @use '../styles/partials/vars' as *;
-
+.active{
+        background-color: black;
+        width: 320px;
+        height: 450px;
+    }
 h1{
     margin-left: 112px;
 }
@@ -78,12 +85,16 @@ h1{
     position: relative;
     height: 450px;
     width: 320px;
+    overflow: hidden;
+    }
     img{
+        text-align: center;
+        background-color: #4d4d4d;
+        font-size: 2.3rem;
         object-fit: cover;
         width: 320px;
         height: 450px;
     }
-}
 .back-cards{
     position: absolute;
     overflow: hidden;
@@ -99,7 +110,7 @@ h1{
         display: block;
         @keyframes example {
         from {top: 450px}
-        to {bottom:0px}
+        to {bottom:0px,}
         }
     }
     p:first-child{
@@ -113,9 +124,6 @@ h1{
             text-transform:none;
             font-weight: 400;
         }
-    }
-    .active{
-        display: block;
     }
     .overview{
         font-family: $font-family-secondary;
