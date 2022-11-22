@@ -28,10 +28,10 @@ export default {
                     <div class="col-6 d-flex flex-start">
                         <nav class="h-100 d-flex align-items-center">
                             <ul class="h-100 d-flex align-items-center">
-                                <li><a href="#"></a>Home</li>
-                                <li><a href="#"></a>FILM</li>
-                                <li><a href="#"></a>Serie tv</li>
-                                <li><a href="#"></a>La mia lista</li>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">FILM</a></li>
+                                <li><a href="#">Serie tv</a></li>
+                                <li><a href="#">La mia lista</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -65,5 +65,10 @@ img{
 li{
     font-size: 1.2rem;
     padding: 0px 15px;
+    a{
+        &:hover{
+            color: lighten($font-primary-color, 20%);
+        }
+    }
 }
 </style>

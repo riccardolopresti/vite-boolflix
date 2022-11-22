@@ -18,19 +18,18 @@ export default {
     }
   },
   methods:{
-    getApiUrl(urlSuffix){
+    /*getApiUrl(urlSuffix){
       return store.url + urlSuffix
-    },
-    getApi(urlSuffix){
-      const urlQuery= this.getApiUrl(urlSuffix);
-      console.log(urlQuery);
-      axios.get(urlQuery, {
-        params:{
-          query: store.userQuery
-        }
-      })
+    },*/
+    getApi(type){
+      //const urlQuery= this.getApiUrl(urlSuffix);
+      //console.log(urlQuery);
+      axios.get(store.url + type, {params: store.params})
       .then(result => {
-        console.log('dop',urlQuery);
+        store[type] = result.data.results
+        console.log('movie',store.movie);
+        console.log('tv',store.tv);
+        /*//console.log('dop',urlQuery);
         if(urlSuffix == store.apiMovieUrl){
           store.querysMovies = result.data.results
           //console.log('MOVIE',store.querysMovies);
@@ -42,9 +41,9 @@ export default {
         if(urlSuffix == store.apiTrend){
           //store.onLoad == result.data
           //console.log(store.onLoad);
-        }
+        }*/
 
-        store.queryMovieTv = store.querysMovies.concat(store.querysTv)
+        //store.queryMovieTv = store.querysMovies.concat(store.querysTv)
         //console.log('array concatenato',store.queryMovieTv);
       })
       .catch(error => {
@@ -53,8 +52,8 @@ export default {
     },
   },
   mounted(){
-    this.getApi(store.apiMovieUrl)
-    this.getApi(store.apiTvUrl)
+    this.getApi(store.apiMovie)
+    this.getApi(store.apiTv)
   }
 }
 
@@ -63,7 +62,8 @@ export default {
 <template>
 
   <AppHeader @search="this.getApi(store.apiMovieUrl),this.getApi(store.apiTvUrl)"/>
-  <AppMain/>
+  <AppMain title="Film"/>
+  <AppMain title="Serie Tv"/>
 
 </template>
 

@@ -1,21 +1,24 @@
 <script>
 
+import {store} from '../data/store.js'
+
 
 export default {
     name:'AppCards',
     props:{
-        objects: Object,
+        type: String,
         imdbUrl: String,
         imdbWidth: String,
     },
     data(){
         return{
-
+            store
         }
     },
     methods:{
         getFlag(string){
             if(string == 'en') return 'gb'
+            if(string == 'ja') return 'jp'
             else return string
         },
         getStar(number){
@@ -32,23 +35,26 @@ export default {
 
 <div class="rl-cards d-flex flex-wrap justify-content-center">
 
-    <div class="box d-flex" v-for="object in objects" :key="object.id">
+    <div class="box d-flex" v-for="object in store[type]" :key="object.id">
 
-        <img :src="`${imdbUrl}${imdbWidth}${object.backdrop_path}`" :alt="object.name">
+        <img :src="`${store.mdbUrl}${store.imgWidth}${object.backdrop_path}`" :alt="object.name">
 
         <div class="back-cards p-3" :class="{'active': object.backdrop_path == null}">
-            <p>{{object.original_title}}{{object.original_name}}</p>
+            <p>{{object.original_title || object.original_name}}</p>
             <p><span :class="`fi fi-${getFlag(object.original_language)}`"></span></p>
-            <p v-if="getStar(object.vote_average) > 0">Voto: <i v-for="item in getStar(object.vote_average)" :key="item" class="fa-solid fa-star"></i></p>
-            <p v-else><i class="fa-regular fa-star"></i></p>
+            <p v-if="getStar(object.vote_average) > 0">Valutazione: <i v-for="item in getStar(object.vote_average)" :key="item" class="fa-solid fa-star"></i>
+            </p>
+            <p v-else>
+                Valutazione: <i class="fa-regular fa-star"></i>
+            </p>
             <p class="overview">{{object.overview}}</p>
         </div>
 
     </div>
 
-    <div class="no-results" v-if="objects.length == 0">
+    <!--<div class="no-results" v-if="objects.length == 0">
         <p>nessun risultato</p>
-    </div>
+    </div>-->
 
 </div>
  
@@ -60,6 +66,7 @@ export default {
 .rl-cards{
     gap: 20px;
     padding-top: 20px;
+    color: lighten($font-primary-color, 10%);
 }
 .box{
     position: relative;

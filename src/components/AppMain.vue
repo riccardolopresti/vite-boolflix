@@ -5,6 +5,9 @@ import {store} from '../data/store.js'
 
 export default {
     name:'AppMain',
+    props:{
+        title: String
+    },
     components:{
         AppCards
     },
@@ -20,12 +23,14 @@ export default {
   <div class="conteiner-fluid">
     <div class="rl-container">
         <div class="row p-2">
-            <div class="col">
 
-                <AppCards 
-                :objects="store.queryMovieTv"
-                :imdbUrl="store.mdbUrl"
-                :imdbWidth="store.imgWidth"/>
+            <h1>{{title}}</h1>
+
+            <div class="col">
+                
+                <AppCards type="movie"/>
+
+                <AppCards type="tv"/>
 
             </div>
         </div>
