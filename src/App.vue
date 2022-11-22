@@ -18,22 +18,42 @@ export default {
     }
   },
   methods:{
-    getApi(type){
-      axios.get(store.url + type, {params: store.params})
+    getApi(type, trend = false){
+      store.trend = [];
+      store.movie = [];
+      store.tv = [];
+      if(trend){
+        store.url = 'https://api.themoviedb.org/3/trending/all/week?api_key=3de582aff9233c787f6aa552659674c1'
+        store.params.query='';
+      }else{
+        store.url = 'https://api.themoviedb.org/3/search/' + [type];
+      }
+      axios.get(store.url, {params: store.params})
       .then(result => {
-        
+        console.log(store.url);
         store[type] = result.data.results
         console.log('movie',store.movie);
         console.log('tv',store.tv);
+        console.log('trend',store.trend);
       })
       .catch(error => {
         console.log(error);
       })
     },
+    getSearch(string){
+      if(string == 'all'){
+        this.getApi('movie')
+        this.getApi('tv')
+      }else{
+        this.getApi(string)
+        if(store[string].length == 0){
+          return 'Nessun Risultato'
+        }
+      }
+    }
   },
   mounted(){
-    this.getApi('movie')
-    this.getApi('tv')
+    this.getApi('trend', true)
   }
 }
 
@@ -41,7 +61,12 @@ export default {
 
 <template>
 
-  <AppHeader @search="this.getApi(store.apiMovieUrl),this.getApi(store.apiTvUrl)"/>
+  <AppHeader 
+  @search="this.getSearch('all')" 
+  @home="this.getApi('trend', true)"
+  @film="this.getSearch('movie')"
+  @tv="this.getSearch('tv')"
+  />
   <AppMain/>
 
 </template>

@@ -7,8 +7,6 @@ export default {
     name:'AppCards',
     props:{
         type: String,
-        imdbUrl: String,
-        imdbWidth: String,
         title: String
     },
     data(){
@@ -72,6 +70,7 @@ h1{
     margin-left: 112px;
 }
 .rl-cards-container{
+    padding-bottom: 50px;
     gap: 20px;
     color: lighten($font-primary-color, 10%);
 }

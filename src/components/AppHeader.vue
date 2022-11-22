@@ -21,16 +21,16 @@ export default {
 
                     <div class="col-1 d-flex">
                         <div class="logo d-flex align-item-center">
-                            <img src="/logo.png" alt="logo">
+                            <img @click="$emit('home')" src="/logo.png" alt="logo">
                         </div>
                     </div>
 
                     <div class="col-6 d-flex flex-start">
                         <nav class="h-100 d-flex align-items-center">
                             <ul class="h-100 d-flex align-items-center">
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">FILM</a></li>
-                                <li><a href="#">Serie tv</a></li>
+                                <li><a @click="$emit('home')" href="#">Home</a></li>
+                                <li><a @click="$emit('film')" href="#">FILM</a></li>
+                                <li><a @click="$emit('tv')" href="#">Serie tv</a></li>
                                 <li><a href="#">La mia lista</a></li>
                             </ul>
                         </nav>
@@ -38,7 +38,7 @@ export default {
 
                     <div class="col-2 d-flex align-item-center rl-center">
                         <div class="input-group mb-3 d-flex align-content-center h-100">
-                            <input @keyup.enter="$emit('search')" type="text" v-model="store.userQuery" class="form-control rl-btn" placeholder="Cerca">
+                            <input @keyup.enter="$emit('search')" type="text" v-model="store.params.query" class="form-control rl-btn" placeholder="Cerca">
                             <button @click="$emit('search')" class="btn btn-outline-secondary rl-btn">Cerca</button>
                         </div>
                     </div>
@@ -61,6 +61,7 @@ header{
 img{
     min-width: 180px;
     object-fit: contain;
+    cursor: pointer;
 }
 li{
     font-size: 1.2rem;

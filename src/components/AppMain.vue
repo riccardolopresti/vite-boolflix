@@ -1,7 +1,7 @@
 <script>
 
 import AppCards from './AppCards.vue';
-
+import {store} from '../data/store.js'
 
 export default {
     name:'AppMain',
@@ -13,7 +13,7 @@ export default {
     },
     data(){
         return{
-        
+            store
         }
     }
 }
@@ -27,9 +27,12 @@ export default {
             
             <div class="col">
                 
-                <AppCards title="Film" type="movie"/>
+                <AppCards v-if="store.trend.length > 0" title="Popolari" type="trend"/>
 
-                <AppCards title="Serie Tv" type="tv"/>
+                <AppCards v-if="store.movie.length > 0" title="Film" type="movie"/>
+
+                <AppCards v-if="store.tv.length > 0" title="Serie Tv" type="tv"/>
+
 
             </div>
         </div>
