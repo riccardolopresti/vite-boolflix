@@ -41,9 +41,13 @@ export default {
     
     <div class="box d-flex" v-for="object in store[type]" :key="object.id">
 
-        <img 
+        <img
         :src="`${store.mdbUrl}${store.imgWidth}${object.backdrop_path}`" 
-        :alt="object.name || object.title"
+        alt=""
+        >
+        <img class="placeholder-img" v-if="object.backdrop_path === null"
+        src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/fb3ef66312333.5691dd2253378.jpg" 
+        alt=""
         >
 
         <div class="back-cards p-3" >
@@ -87,12 +91,13 @@ export default {
     overflow: hidden;
     }
     img{
-        text-align: center;
-        background-color: #4d4d4d;
-        font-size: 2.3rem;
         object-fit: cover;
         width: 320px;
         height: 450px;
+    }
+    .placeholder-img{
+        height: 500px;
+        width: 400px;
     }
 .back-cards{
     position: absolute;
@@ -128,6 +133,8 @@ export default {
         font-family: $font-family-secondary;
         height: 200px;
         overflow: auto;
+        scrollbar-width: thin;
+        scrollbar-color: rgb(196, 196, 196) rgb(53, 53, 53);
     }
 }
 </style>

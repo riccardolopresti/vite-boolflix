@@ -16,6 +16,7 @@
     "bootstrap": "^5.2.2",
     "flag-icons": "^6.6.6",
     "sass": "^1.56.1",
+    "swiper": "^8.4.5",
     "vue": "^3.2.41"
   },
   "devDependencies": {

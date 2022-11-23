@@ -62,7 +62,7 @@ export default {
 
                     <div class="col-auto d-flex h-100 ">
                         <div class="logo d-flex align-item-center">
-                            <img src="/logo.png" alt="logo">
+                            <img @click="getActive(0),getEmit('trend')" src="/logo.png" alt="logo">
                         </div>
                     </div>
                     

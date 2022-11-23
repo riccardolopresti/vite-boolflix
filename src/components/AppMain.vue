@@ -1,6 +1,7 @@
 <script>
 
 import AppCards from './AppCards.vue';
+import AppJumbo from './AppJumbo.vue'
 import {store} from '../data/store.js'
 
 export default {
@@ -9,7 +10,8 @@ export default {
         title: String
     },
     components:{
-        AppCards
+        AppCards,
+        AppJumbo
     },
     data(){
         return{
@@ -20,6 +22,11 @@ export default {
 </script>
 
 <template>
+
+<AppJumbo v-if="store.trend.length > 0" type="trend"/>
+
+<AppJumbo v-if="store.movie.length > 0" type="movie"/>
+
   <div class="conteiner-fluid">
     <div class="rl-container">
         <div class="row p-2">

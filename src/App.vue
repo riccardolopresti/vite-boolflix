@@ -2,6 +2,7 @@
 
 import AppHeader from '../src/components/AppHeader.vue'
 import AppMain from '../src/components/AppMain.vue'
+
 import axios from 'axios'
 
 import {store} from '../src/data/store.js'
@@ -68,6 +69,7 @@ export default {
   @changeResultsType="(typeSeach) => getSearch(typeSeach)"
   @search="getSearch('all')"
   />
+
   <AppMain/>
 
 </template>
