@@ -68,7 +68,7 @@ export default {
         
         <div class="info-box">
             <h1>{{item.original_title || item.original_name}}</h1>
-            <p>Valutazione: <star-rating :read-only=true :rating= getStar(item.vote_average) :increment= 0.01 :show-rating= false star-size="30" active-color="#f7f7f7" /></p>
+            <p>Valutazione: <star-rating :read-only=true :rating= getStar(item.vote_average) :increment= 0.01 :show-rating= false star-size="30" active-color="#f7f7f7" inactive-color="#565656" /></p>
             <p class="overview">{{item.overview}}</p>
         </div>
 
@@ -82,16 +82,16 @@ export default {
 
 .swiper {
   width: 100%;
-  height: 850px;
+  min-height: 850px;
+  height: calc(100vh - 100px);
 }
-
 .swiper-slide{
     position: relative;
     .info-box{
         background-color: rgba(0, 0, 0, 0.348);
         padding: 20px;
         width: 800px;
-        height: 500px;
+        height: 530px;
         position: absolute;
         border-radius: 5px;
         top: 50px;
@@ -129,6 +129,8 @@ export default {
   margin-right: auto;
 }
 
-
+.swiper-button-next, .swiper-button-prev{
+  color: $font-primary-color;
+}
 
 </style>

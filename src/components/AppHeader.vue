@@ -102,6 +102,7 @@ export default {
 
                             <div class="log d-flex align-items-center justify-content-end h-100 w-25">
                                 <img src="/avatar.jpg" alt="avatar.jpg">
+                                <i class="fa-solid fa-chevron-down"></i>
                             </div>
 
                         </div>
@@ -161,14 +162,19 @@ i{
     cursor: pointer;
     line-height: 34px;
     font-size: 1.8rem;
+    &:hover{
+        color: lighten($font-primary-color, 100%);
+    }
 }
 .log {
     min-width: 80px;
     img{
         width: 50px;
         height: 50px;
-        overflow: hidden;
-        border-radius: 50%;
+    }
+    i{
+        font-size: 0.8rem;
+        padding-left: 5px;
     }
 }
 

@@ -57,7 +57,7 @@ export default {
         <div class="back-cards p-3" >
             <p>{{object.original_title || object.original_name}}</p>
             <p><span :class="`fi fi-${getFlag(object.original_language)}`"></span></p>
-            <p v-if="getStar(object.vote_average) > 0">Valutazione: <star-rating :read-only=true :rating= getStar(object.vote_average) :increment= 0.01 :show-rating= false star-size="20" active-color="#f7f7f7" />
+            <p v-if="getStar(object.vote_average) > 0">Valutazione: <star-rating :read-only=true :rating= getStar(object.vote_average) :increment= 0.01 :show-rating= false star-size="20" active-color="#f7f7f7" inactive-color="#565656" />
             </p>
             <p v-else>
                 Valutazione: <i class="fa-regular fa-star"></i>
