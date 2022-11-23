@@ -2,6 +2,8 @@
 
 import {Swiper, SwiperSlide } from "swiper/vue";
 import {store} from '../data/store.js'
+import StarRating from 'vue-star-rating'
+
 
 import "swiper/css";
 
@@ -20,6 +22,7 @@ export default {
     components: {
     Swiper,
     SwiperSlide,
+    StarRating
   },
   data(){
     return{
@@ -33,7 +36,7 @@ export default {
   },
   methods:{
     getStar(number){
-            return Math.round(number / 2);
+            return (number / 2);
         }
   }
 };
@@ -65,7 +68,7 @@ export default {
         
         <div class="info-box">
             <h1>{{item.original_title || item.original_name}}</h1>
-            <p v-if="getStar(item.vote_average) > 0">Valutazione: <i v-for="item in getStar(item.vote_average)" :key="item" class="fa-solid fa-star"></i></p>
+            <p>Valutazione: <star-rating :read-only=true :rating= getStar(item.vote_average) :increment= 0.01 :show-rating= false star-size="30" active-color="#f7f7f7" /></p>
             <p class="overview">{{item.overview}}</p>
         </div>
 

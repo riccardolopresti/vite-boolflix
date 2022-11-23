@@ -1,6 +1,7 @@
 <script>
 
 import {store} from '../data/store.js'
+import StarRating from 'vue-star-rating'
 
 
 export default {
@@ -8,6 +9,9 @@ export default {
     props:{
         type: String,
         title: String
+    },
+    components: {
+        StarRating
     },
     data(){
         return{
@@ -21,7 +25,7 @@ export default {
             else return string
         },
         getStar(number){
-            return Math.round(number / 2);
+            return (number / 2)
         }
     },
     mounted(){
@@ -53,7 +57,7 @@ export default {
         <div class="back-cards p-3" >
             <p>{{object.original_title || object.original_name}}</p>
             <p><span :class="`fi fi-${getFlag(object.original_language)}`"></span></p>
-            <p v-if="getStar(object.vote_average) > 0">Valutazione: <i v-for="item in getStar(object.vote_average)" :key="item" class="fa-solid fa-star"></i>
+            <p v-if="getStar(object.vote_average) > 0">Valutazione: <star-rating :read-only=true :rating= getStar(object.vote_average) :increment= 0.01 :show-rating= false star-size="20" active-color="#f7f7f7" />
             </p>
             <p v-else>
                 Valutazione: <i class="fa-regular fa-star"></i>
