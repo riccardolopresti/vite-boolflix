@@ -27,6 +27,8 @@ export default {
 
 <AppJumbo v-if="store.movie.length > 0" type="movie"/>
 
+<AppJumbo v-if="store.tv.length > 0" type="tv"/>
+
   <div class="conteiner-fluid">
     <div class="rl-container">
         <div class="row p-2">

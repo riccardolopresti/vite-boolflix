@@ -1,6 +1,6 @@
 <script>
 
-import { Swiper, SwiperSlide } from "swiper/vue";
+import {Swiper, SwiperSlide } from "swiper/vue";
 import {store} from '../data/store.js'
 
 import "swiper/css";
@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 
-import { Pagination, Navigation } from "swiper";
+import {Autoplay, Pagination, Navigation } from "swiper";
 
 
 export default {
@@ -28,7 +28,7 @@ export default {
   },
   setup() {
     return {
-      modules: [Pagination, Navigation],
+      modules: [Autoplay, Pagination, Navigation],
     };
   },
   methods:{
@@ -37,15 +37,18 @@ export default {
         }
   }
 };
-
-
-
 </script>
 
 <template>
+
  <swiper
     :slidesPerView="1"
     :spaceBetween="30"
+    :autoplay="{
+      delay: 2500,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true
+    }"
     :loop="true"
     :pagination="{
       clickable: true,
@@ -68,6 +71,7 @@ export default {
 
     </swiper-slide>
   </swiper>
+
 </template>
 
 <style lang="scss" scoped>
