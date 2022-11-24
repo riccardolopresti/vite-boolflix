@@ -20,6 +20,7 @@ export default {
   },
   methods:{
     getApi(type, trend = false){
+      store.isLoaded = false;
       console.log('tipo',type);
       store.trend = [];
       store.movie = [];
@@ -34,6 +35,8 @@ export default {
       .then(result => {
         console.log(store.url);
         store[type] = result.data.results
+        store.isLoaded = true;
+
         console.log('movie',store.movie);
         console.log('tv',store.tv);
         console.log('trend',store.trend);

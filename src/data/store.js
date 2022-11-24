@@ -13,4 +13,5 @@ export const store= reactive({
     trend:[],
     movie:[],
     tv:[],
+    isLoaded: false
 })
