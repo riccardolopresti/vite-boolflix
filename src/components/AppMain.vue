@@ -23,7 +23,7 @@ export default {
 
 <template>
 
-<div v-if="store.isLoaded">
+<div >
     <AppJumbo v-if="store.trend.length > 0" type="trend"/>
 
     <AppJumbo v-if="store.movie.length > 0" type="movie"/>
@@ -53,9 +53,9 @@ export default {
     </div>
 </div>
 
-<div class="loader" v-else>
+<!--<div class="loader" v-else>
     <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-</div>
+</div>-->
 
 </template>
 
