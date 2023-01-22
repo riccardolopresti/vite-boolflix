@@ -29,7 +29,15 @@ export default {
         store.url = 'https://api.themoviedb.org/3/trending/all/week?api_key=3de582aff9233c787f6aa552659674c1'
         store.params.query='';
       }else{
-        store.url = 'https://api.themoviedb.org/3/search/' + [type];
+        if(type==='movie' && store.params.query==''){
+          store.url = 'https://api.themoviedb.org/3/trending/movie/week?api_key=3de582aff9233c787f6aa552659674c1'
+          store.params.query='';
+        }else if(type==='tv' && store.params.query==''){
+          store.url = 'https://api.themoviedb.org/3/trending/tv/week?api_key=3de582aff9233c787f6aa552659674c1'
+          store.params.query='';
+        }else{
+          store.url = 'https://api.themoviedb.org/3/search/' + [type];
+        }
       }
       axios.get(store.url, {params: store.params})
       .then(result => {
