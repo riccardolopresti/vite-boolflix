@@ -63,6 +63,10 @@ export default {
       if(string == 'all'){
         this.getApi('movie')
         this.getApi('tv')
+      }if(string == 'favourite'){
+        store.movie = '';
+        store.tv = '';
+        return 'Nessun Risultato'
       }else{
         this.getApi(string)
         if(store[string].length == 0){

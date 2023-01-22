@@ -31,10 +31,12 @@ export default {
         addRemoveFav(object){
             if(!store.favourite.includes(object)) {
                 store.favourite.push(object);
+                this.isFav = true;
             }
             else {
                 const index = store.favourite.indexOf(object);
                 store.favourite.splice(index,1);
+                this.isFav = false;
             }
             
             console.log(store.favourite);
@@ -70,8 +72,8 @@ export default {
             <div class="title-box d-flex">
                 <p class="w-100">{{object.original_title || object.original_name}}</p>
                 <div class="fav d-flex justify-content-end">
-                    <p @click.stop="addRemoveFav(object)" v-if="isFav === false" class="fs-1"><i class="fa-regular fa-heart"></i></p>
-                    <!-- <p @click.stop="addRemove(object)" v-if="isFav" class="fs-1"><i class="fa-solid fa-heart"></i></p> -->
+                    <p @click.stop="addRemoveFav(object)" v-if="!store.favourite.includes(object)" class="empty fs-1"><i class="fa-regular fa-heart"></i></p>
+                    <p @click.stop="addRemoveFav(object)" v-if="store.favourite.includes(object)" class="filled fs-1"><i class="fa-solid fa-heart"></i></p>
                 </div>
             </div>
             <p><span :class="`fi fi-${getFlag(object.original_language)}`"></span></p>
@@ -154,6 +156,16 @@ export default {
         overflow: auto;
         scrollbar-width: thin;
         scrollbar-color: rgb(196, 196, 196) rgb(53, 53, 53);
+    }
+
+    .fav{
+        cursor: pointer;
+        .empty i:hover{
+            color: #db1927;
+        }
+    }
+    .fav .filled i{
+        color: #db1927;
     }
 }
 </style>
