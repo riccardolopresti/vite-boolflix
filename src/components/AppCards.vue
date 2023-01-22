@@ -15,7 +15,8 @@ export default {
     },
     data(){
         return{
-            store
+            store,
+            isFav:false
         }
     },
     methods:{
@@ -26,6 +27,17 @@ export default {
         },
         getStar(number){
             return (number / 2)
+        },
+        addRemoveFav(object){
+            if(!store.favourite.includes(object)) {
+                store.favourite.push(object);
+            }
+            else {
+                const index = store.favourite.indexOf(object);
+                store.favourite.splice(index,1);
+            }
+            
+            console.log(store.favourite);
         }
     },
     mounted(){
@@ -55,7 +67,13 @@ export default {
         >
 
         <div class="back-cards p-3" >
-            <p>{{object.original_title || object.original_name}}</p>
+            <div class="title-box d-flex">
+                <p class="w-100">{{object.original_title || object.original_name}}</p>
+                <div class="fav d-flex justify-content-end">
+                    <p @click.stop="addRemoveFav(object)" v-if="isFav === false" class="fs-1"><i class="fa-regular fa-heart"></i></p>
+                    <!-- <p @click.stop="addRemove(object)" v-if="isFav" class="fs-1"><i class="fa-solid fa-heart"></i></p> -->
+                </div>
+            </div>
             <p><span :class="`fi fi-${getFlag(object.original_language)}`"></span></p>
             <p >Valutazione: <star-rating :read-only=true :rating= getStar(object.vote_average) :increment= 0.01 :show-rating= false star-size="20" active-color="#f7f7f7" inactive-color="#565656" />
             </p>

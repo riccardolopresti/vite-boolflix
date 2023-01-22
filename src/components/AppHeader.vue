@@ -29,6 +29,7 @@ export default {
                 },
                 {
                     text: 'La mia lista',
+                    emit: 'favourite',
                     href: '#',
                     current: false
                 },
