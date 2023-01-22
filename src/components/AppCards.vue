@@ -8,14 +8,15 @@ export default {
     name:'AppCards',
     props:{
         type: String,
-        title: String
+        title: String,
     },
     components: {
         StarRating
     },
     data(){
         return{
-            store
+            store,
+            isFav:false
         }
     },
     methods:{
@@ -26,6 +27,19 @@ export default {
         },
         getStar(number){
             return (number / 2)
+        },
+        addRemoveFav(object){
+            if(!store.favourite.includes(object)) {
+                store.favourite.push(object);
+                this.isFav = true;
+            }
+            else {
+                const index = store.favourite.indexOf(object);
+                store.favourite.splice(index,1);
+                this.isFav = false;
+            }
+            
+            console.log(store.favourite);
         }
     },
     mounted(){
@@ -55,7 +69,13 @@ export default {
         >
 
         <div class="back-cards p-3" >
-            <p>{{object.original_title || object.original_name}}</p>
+            <div class="title-box d-flex">
+                <p class="w-100">{{object.original_title || object.original_name}}</p>
+                <div class="fav d-flex justify-content-end">
+                    <p @click.stop="addRemoveFav(object)" v-if="!store.favourite.includes(object)" class="empty fs-1"><i class="fa-regular fa-heart"></i></p>
+                    <p @click.stop="addRemoveFav(object)" v-if="store.favourite.includes(object)" class="filled fs-1"><i class="fa-solid fa-heart"></i></p>
+                </div>
+            </div>
             <p><span :class="`fi fi-${getFlag(object.original_language)}`"></span></p>
             <p >Valutazione: <star-rating :read-only=true :rating= getStar(object.vote_average) :increment= 0.01 :show-rating= false star-size="20" active-color="#f7f7f7" inactive-color="#565656" />
             </p>
@@ -136,6 +156,16 @@ export default {
         overflow: auto;
         scrollbar-width: thin;
         scrollbar-color: rgb(196, 196, 196) rgb(53, 53, 53);
+    }
+
+    .fav{
+        cursor: pointer;
+        .empty i:hover{
+            color: #db1927;
+        }
+    }
+    .fav .filled i{
+        color: #db1927;
     }
 }
 </style>

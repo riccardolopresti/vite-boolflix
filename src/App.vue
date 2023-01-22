@@ -29,17 +29,29 @@ export default {
         store.url = 'https://api.themoviedb.org/3/trending/all/week?api_key=3de582aff9233c787f6aa552659674c1'
         store.params.query='';
       }else{
-        store.url = 'https://api.themoviedb.org/3/search/' + [type];
+        if(type==='movie' && store.params.query==''){
+          store.url = 'https://api.themoviedb.org/3/trending/movie/week?api_key=3de582aff9233c787f6aa552659674c1'
+          store.params.query='';
+        }else if(type==='tv' && store.params.query==''){
+          store.url = 'https://api.themoviedb.org/3/trending/tv/week?api_key=3de582aff9233c787f6aa552659674c1'
+          store.params.query='';
+        }else if(type==='favourite' && store.params.query==''){
+          store.url = 'https://api.themoviedb.org/3/trending/movie/week?api_key=3de582aff9233c787f6aa552659674c1';
+          store.params.query='';
+        }else{
+          store.url = 'https://api.themoviedb.org/3/search/' + [type];
+        }
       }
       axios.get(store.url, {params: store.params})
       .then(result => {
         console.log(store.url);
-        store[type] = result.data.results
-        store.isLoaded = true;
+        if(type == 'favourite'){
+          store[type] = store.favourite;
+        }else{
+          store[type] = result.data.results
+        }
 
-        console.log('movie',store.movie);
-        console.log('tv',store.tv);
-        console.log('trend',store.trend);
+        store.isLoaded = true;
       })
       .catch(error => {
         console.log(error);
@@ -51,6 +63,10 @@ export default {
       if(string == 'all'){
         this.getApi('movie')
         this.getApi('tv')
+      }if(string == 'favourite'){
+        store.movie = '';
+        store.tv = '';
+        return 'Nessun Risultato'
       }else{
         this.getApi(string)
         if(store[string].length == 0){

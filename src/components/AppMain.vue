@@ -23,7 +23,7 @@ export default {
 
 <template>
 
-<div >
+<div v-if="store.isLoaded">
     <AppJumbo v-if="store.trend.length > 0" type="trend"/>
 
     <AppJumbo v-if="store.movie.length > 0" type="movie"/>
@@ -43,7 +43,9 @@ export default {
 
                     <AppCards v-if="store.tv.length > 0" title="Serie Tv" type="tv"/>
 
-                    <div class="no-results" v-if="(store.movie.length == 0) && (store.tv.length == 0) && (store.trend.length == 0)">
+                    <AppCards v-if="store.favourite.length > 0" title="La Mia Lista" type="favourite"/>
+
+                    <div class="no-results" v-if="(store.movie.length == 0) && (store.tv.length == 0) && (store.trend.length == 0) && (store.favourite.length == 0)">
                         <p>nessun risultato</p>
                     </div>
 
@@ -53,9 +55,9 @@ export default {
     </div>
 </div>
 
-<!--<div class="loader" v-else>
+<div class="loader" v-else>
     <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-</div>-->
+</div>
 
 </template>
 
