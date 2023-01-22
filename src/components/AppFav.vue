@@ -55,7 +55,7 @@ export default {
 <div class="rl-cards-container d-flex flex-wrap justify-content-center">
 
     
-    <div class="box d-flex" v-for="object in store[type]" :key="object.id">
+    <div class="box d-flex" v-for="object in store['favourite']" :key="object.id">
 
         <img
         :src="`${store.mdbUrl}${store.imgWidth}${object.backdrop_path}`" 
